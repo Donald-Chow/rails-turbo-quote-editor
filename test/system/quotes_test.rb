@@ -12,7 +12,7 @@ class QuotesTest < ApplicationSystemTestCase
 
     # When we click on the link with the text "New quote"
     # we expect to land on a page with the title "New quote"
-    click_on "New Quote"
+    click_on "New quote"
     assert_selector "h1", text: "New quote"
 
     # When we fill in the name input with "Capybara quote"
@@ -23,7 +23,7 @@ class QuotesTest < ApplicationSystemTestCase
     # We expect to be back on the page with the title "Quotes"
     # and to see our "Capybara quote" added to the list
     assert_selector "h1", text: "Quotes"
-    assert_text "Capybara Quote"
+    assert_text "Capybara quote"
   end
 
   test "Showing a quote" do
