@@ -36,4 +36,4 @@
 /node_modules
 
 # Ignore db dumps
-dump.db
+dump.rdb
