@@ -9,7 +9,10 @@ class LineItemDatesController < ApplicationController
   def create
     @line_item_date = @quote.line_item_dates.build(line_item_date_params)
     if @line_item_date.save
-      redirect_to quote_path(@quote), notice: "Date added successfully"
+      respond_to do |format|
+        format.html { redirect_to quote_path(@quote), notice: "Date added successfully" }
+        format.turbo_stream { flash.now[:notice] = "Date added successfully" }
+      end
     else
       render :new, status: :unprocessable_entity
     end
