@@ -11,7 +11,7 @@ class LineItemsController < ApplicationController
     @line_item = @line_item_date.line_items.build(line_item_params)
 
     if @line_item.save
-      redirect_to quote_path(@quote)
+      redirect_to quote_path(@quote), notice: 'Item was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -22,10 +22,16 @@ end
 
 def update
   if @line_item.update(line_item_params)
-    redirect_to quote_path(@quote)
+    redirect_to quote_path(@quote), notice: 'Item was successfully updated.'
   else
     render :edit, status: :unprocessable_entity
   end
+end
+
+def destroy
+  @line_item.destroy
+
+  redirect_to quote_path(@quote), notice: 'Item was successfully deleted.'
 end
 
   private
