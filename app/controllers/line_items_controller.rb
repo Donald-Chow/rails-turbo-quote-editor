@@ -37,7 +37,10 @@ end
 def destroy
   @line_item.destroy
 
-  redirect_to quote_path(@quote), notice: 'Item was successfully deleted.'
+  respond_to do |format|
+    format.html { redirect_to quote_path(@quote), notice: 'Item was successfully deleted.' }
+    format.turbo_stream { flash.now[:notice] = 'Item was successfully deleted.' }
+  end
 end
 
   private
